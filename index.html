@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="description" content="Aplicación móvil para rastrear gastos diarios">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>MisGastos - Rastreador de Gastos</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADcElEQVR4nO2bS2gTURSGv0QrWkVFRcWNj4WKj4W4cKGIIm5cuHGhCxe6EBeCCxcuXLhw4ULwsVBBEEVRFBVFUVEURVEURVEURVEURVEURVEURfGxaJpMkzTJJJnJzCS5P5wlhDv3nP+fmXvPzL0gSZIkSZIkSZIkSZIkSVIZAeuAa8Bn4A/wF/gG3AUOAC1xG4wDsAV4APwixl/gEbA7TrNVD+wHXgAzODMNPAd2AXVxmq4KYCPwEJjHnTlgCNgQp/mqADYBw8Ai3iwCz4D2qM2vidrAcgO2AB+BJbxbAkaBLVGaXxO1gWUCtgGfCMcS8BbYFpX5NVEZKAHbgXeEZwl4A2yPwvzqqAwUAHYAHwnPIvAa2Bm2+TVhNy8CdgIfCM8C8ArYFab5gjAfLgB2Ae8Jz1/gJdAZlvlCWA8uAHYD7wjPPPAC6ArD/JowHloA2AOMEp454DnQE7T5tUE/MAewF3hNeOaAZ8C+IM2vDeqBBYB9wBvCMws8BfYHZb4uiAcVAPqA14RnBngCHAzCfH0QDykA9AMjhGcaeAwcWq35xiAeUAA4BLwkPNPAI+Dwas03BfFwAeAwMEx4poBHwJHVmG8O4sECwFHgBeGZAh4CR702v9brhxQAjgHPCc8k8AA47qX59V4/oABwAhhCm0ngPnDSbfP1Xj+cAHASeEF4JoB7wCk3za/z+sEEgFPAc8IzDtwFTrthfp3XDyUAnAaeEZ5x4A5wxqn5eq8fSAA4AzwlPH+AO8BZu+bXe/0wAsBZ4AnhmQBuA+fsml/v9QMIAOeAx4RnDLgFnLdrfr3XDx8AzgMPCc8YcBM478R8vdcPHQAuAA8Izx/gBnDBrvn1fhhYZcAF4D7h+Q1cBy7aNb8+CAOriAZgM7ATaAJagW2AATQCDcAGYD2wFlgDrANWAXXAaqAWqAFqgCpgBTADLAB/0SZnJ4EpYBr4BYyhjQhNAj+BH8B34BvwFfgCfAY+AZ+AMeAj8AH4ALwH3gHvgLfAW+AN8Bp4BbwERoBXwEvgBdqI2HPgGfAUeAI8Bh4BD9EG7x4A99HG/e4B94C7wB3gNnALuAncAK4D14CrwBXgMnAJuAhcAC4A54FzwFngDHAaOAWcBE6gjVKeAI4Dx4BjwFHgCNpJSj9wGDgEHET7b/kvcAA4gPZfIkmSJEmSJEmSJEmSJEkK+B91mJYhQckoMwAAAABJRU5ErkJggg==">
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADcElEQVR4nO2bS2gTURSGv0QrWkVFRcWNj4WKj4W4cKGIIm5cuHGhCxe6EBeCCxcuXLhw4ULwsVBBEEVRFBVFUVEURVEURVEURVEURVEURVEURfGxaJpMkzTJJJnJzCS5P5wlhDv3nP+fmXvPzL0gSZIkSZIkSZIkSZIkSVIZAeuAa8Bn4A/wF/gG3AUOAC1xG4wDsAV4APwixl/gEbA7TrNVD+wHXgAzODMNPAd2AXVxmq4KYCPwEJjHnTlgCNgQp/mqADYBw8Ai3iwCz4D2qM2vidrAcgO2AB+BJbxbAkaBLVGaXxO1gWUCtgGfCMcS8BbYFpX5NVEZKAHbgXeEZwl4A2yPwvzqqAwUAHYAHwnPIvAa2Bm2+TVhNy8CdgIfCM8C8ArYFab5gjAfLgB2Ae8Jz1/gJdAZlvlCWA8uAHYD7wjPPPAC6ArD/JowHloA2AOMEp454DnQE7T5tUE/MAewF3hNeOaAZ8C+IM2vDeqBBYB9wBvCMws8BfYHZb4uiAcVAPqA14RnBngCHAzCfH0QDykA9AMjhGcaeAwcWq35xiAeUAA4BLwkPNPAI+Dwas03BfFwAeAwMEx4poBHwJHVmG8O4sECwFHgBeGZAh4CR702v9brhxQAjgHPCc8k8AA47qX59V4/oABwAhhCm0ngPnDSbfP1Xj+cAHASeEF4JoB7wCk3za/z+sEEgFPAc8IzDtwFTrthfp3XDyUAnAaeEZ5x4A5wxqn5eq8fSAA4AzwlPH+AO8BZu+bXe/0wAsBZ4AnhmQBuA+fsml/v9QMIAOeAx4RnDLgFnLdrfr3XDx8AzgMPCc8YcBM478R8vdcPHQAuAA8Izx/gBnDBrvn1fhhYZcAF4D7h+Q1cBy7aNb8+CAOriAZgM7ATaAJagW2AATQCDcAGYD2wFlgDrANWAXXAaqAWqAFqgCpgBTADLAB/0SZnJ4EpYBr4BYyhjQhNAj+BH8B34BvwFfgCfAY+AZ+AMeAj8AH4ALwH3gHvgLfAW+AN8Bp4BbwERoBXwEvgBdqI2HPgGfAUeAI8Bh4BD9EG7x4A94C7wB3gNnALuAncAK4D14CrwBXgMnAJuAhcAC4A54FzwFngDHAaOAWcBE6gjVKeAI4Dx4BjwFHgCNpJSj9wGDgEHET7b/kvcAA4gPZfIkmSJEmSJEmSJEmSJEkK+B91mJYhQckoMwAAAABJRU5ErkJggg==">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .header h1 {
+            color: var(--dark);
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1::before {
+            content: '💰';
+            font-size: 32px;
+        }
+
+        .balance-card {
+            background: var(--gradient);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .balance-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .balance-amount {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .add-expense-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: var(--light);
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            background: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .category-btn {
+            padding: 14px;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            background: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .category-btn .icon {
+            font-size: 24px;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .expenses-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            border: 2px solid var(--gray-light);
+            border-radius: 20px;
+            background: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .filter-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .expense-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .expense-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .expense-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .expense-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .expense-info {
+            flex: 1;
+        }
+
+        .expense-category {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .expense-description {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 2px;
+        }
+
+        .expense-date {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .expense-amount {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--danger);
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-left: 8px;
+        }
+
+        .delete-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+        }
+
+        .empty-state .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .charts-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .chart-container {
+            margin-top: 20px;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .chart-label {
+            min-width: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-bar-bg {
+            flex: 1;
+            height: 32px;
+            background: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .install-prompt {
+            background: var(--gradient);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .install-prompt p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .install-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .install-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .balance-amount {
+                font-size: 36px;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .expense-item {
+            animation: slideIn 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="installPrompt" class="install-prompt" style="display: none;">
+            <p>📱 Instalar aplicación</p>
+            <button class="install-btn" onclick="installApp()">Instalar</button>
+        </div>
+
+        <div class="header">
+            <h1>MisGastos</h1>
+            <div class="balance-card">
+                <div class="balance-label">Balance Total</div>
+                <div class="balance-amount" id="totalBalance">$0.00</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Total Gastado</div>
+                        <div class="stat-value" id="totalExpenses">$0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Este Mes</div>
+                        <div class="stat-value" id="monthExpenses">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-expense-card">
+            <div class="card-title">➕ Agregar Gasto</div>
+            <form id="expenseForm">
+                <div class="form-group">
+                    <label class="form-label">Monto ($)</label>
+                    <input type="number" class="form-input" id="amount" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Descripción</label>
+                    <input type="text" class="form-input" id="description" placeholder="Ej: Almuerzo en restaurante" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Categoría</label>
+                    <div class="category-grid">
+                        <button type="button" class="category-btn" data-category="comida">
+                            <span class="icon">🍔</span>
+                            <span>Comida</span>
+                        </button>
+                        <button type="button" class="category-btn" data-category="transporte">
+                            <span class="icon">🚗</span>
+                            <span>Transporte</span>
+                        </button>
+                        <button type="button" class="category-btn" data-category="ropa">
+                            <span class="icon">👕</span>
+                            <span>Ropa</span>
+                        </button>
+                        <button type="button" class="category-btn" data-category="regalos">
+                            <span class="icon">🎁</span>
+                            <span>Regalos</span>
+                        </button>
+                        <button type="button" class="category-btn" data-category="entretenimiento">
+                            <span class="icon">🎬</span>
+                            <span>Diversión</span>
+                        </button>
+                        <button type="button" class="category-btn" data-category="otros">
+                            <span class="icon">📦</span>
+                            <span>Otros</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Fecha</label>
+                    <input type="date" class="form-input" id="date" required>
+                </div>
+                <button type="submit" class="btn-primary">💾 Guardar Gasto</button>
+            </form>
+        </div>
+
+        <div class="charts-card">
+            <div class="card-title">📊 Gastos por Categoría</div>
+            <div class="chart-container" id="categoryChart"></div>
+        </div>
+
+        <div class="expenses-card">
+            <div class="card-title">📝 Historial de Gastos</div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Todos</button>
+                <button class="filter-tab" data-filter="comida">🍔 Comida</button>
+                <button class="filter-tab" data-filter="transporte">🚗 Transporte</button>
+                <button class="filter-tab" data-filter="ropa">👕 Ropa</button>
+                <button class="filter-tab" data-filter="regalos">🎁 Regalos</button>
+                <button class="filter-tab" data-filter="entretenimiento">🎬 Diversión</button>
+                <button class="filter-tab" data-filter="otros">📦 Otros</button>
+            </div>
+            <div class="expense-list" id="expenseList"></div>
+        </div>
+    </div>
+
+    <script>
+        const categoryIcons = {
+            comida: '🍔',
+            transporte: '🚗',
+            ropa: '👕',
+            regalos: '🎁',
+            entretenimiento: '🎬',
+            otros: '📦'
+        };
+
+        const categoryColors = {
+            comida: '#f59e0b',
+            transporte: '#3b82f6',
+            ropa: '#ec4899',
+            regalos: '#10b981',
+            entretenimiento: '#8b5cf6',
+            otros: '#6366f1'
+        };
+
+        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        let selectedCategory = '';
+        let currentFilter = 'all';
+
+        document.getElementById('date').valueAsDate = new Date();
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedCategory = this.dataset.category;
+            });
+        });
+
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderExpenses();
+            });
+        });
+
+        document.getElementById('expenseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!selectedCategory) {
+                alert('Por favor selecciona una categoría');
+                return;
+            }
+
+            const expense = {
+                id: Date.now(),
+                amount: parseFloat(document.getElementById('amount').value),
+                description: document.getElementById('description').value,
+                category: selectedCategory,
+                date: document.getElementById('date').value
+            };
+
+            expenses.unshift(expense);
+            localStorage.setItem('expenses', JSON.stringify(expenses));
+
+            this.reset();
+            document.getElementById('date').valueAsDate = new Date();
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            selectedCategory = '';
+
+            updateStats();
+            renderExpenses();
+            renderChart();
+
+            const button = document.querySelector('.btn-primary');
+            button.textContent = '✓ Guardado!';
+            setTimeout(() => {
+                button.textContent = '💾 Guardar Gasto';
+            }, 1500);
+        });
+
+        function deleteExpense(id) {
+            if (confirm('¿Estás seguro de eliminar este gasto?')) {
+                expenses = expenses.filter(e => e.id !== id);
+                localStorage.setItem('expenses', JSON.stringify(expenses));
+                updateStats();
+                renderExpenses();
+                renderChart();
+            }
+        }
+
+        function renderExpenses() {
+            const expenseList = document.getElementById('expenseList');
+            let filteredExpenses = currentFilter === 'all'
+                ? expenses
+                : expenses.filter(e => e.category === currentFilter);
+
+            if (filteredExpenses.length === 0) {
+                expenseList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📭</div>
+                        <p>No hay gastos registrados</p>
+                    </div>
+                `;
+                return;
+            }
+
+            expenseList.innerHTML = filteredExpenses.map(expense => `
+                <div class="expense-item" style="border-left-color: ${categoryColors[expense.category]}">
+                    <div class="expense-icon" style="background: ${categoryColors[expense.category]}20">
+                        ${categoryIcons[expense.category]}
+                    </div>
+                    <div class="expense-info">
+                        <div class="expense-category">${expense.category.charAt(0).toUpperCase() + expense.category.slice(1)}</div>
+                        <div class="expense-description">${expense.description}</div>
+                        <div class="expense-date">${formatDate(expense.date)}</div>
+                    </div>
+                    <div class="expense-amount">$${expense.amount.toFixed(2)}</div>
+                    <button class="delete-btn" onclick="deleteExpense(${expense.id})">🗑️</button>
+                </div>
+            `).join('');
+        }
+
+        function updateStats() {
+            const total = expenses.reduce((sum, e) => sum + e.amount, 0);
+            const thisMonth = expenses.filter(e => {
+                const expenseDate = new Date(e.date);
+                const now = new Date();
+                return expenseDate.getMonth() === now.getMonth() &&
+                       expenseDate.getFullYear() === now.getFullYear();
+            }).reduce((sum, e) => sum + e.amount, 0);
+
+            document.getElementById('totalBalance').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('totalExpenses').textContent = `$${total.toFixed(0)}`;
+            document.getElementById('monthExpenses').textContent = `$${thisMonth.toFixed(0)}`;
+        }
+
+        function renderChart() {
+            const categoryTotals = {};
+
+            expenses.forEach(expense => {
+                categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
+            });
+
+            const maxAmount = Math.max(...Object.values(categoryTotals), 1);
+            const chartContainer = document.getElementById('categoryChart');
+
+            if (Object.keys(categoryTotals).length === 0) {
+                chartContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📊</div>
+                        <p>No hay datos para mostrar</p>
+                    </div>
+                `;
+                return;
+            }
+
+            chartContainer.innerHTML = Object.entries(categoryTotals)
+                .sort((a, b) => b[1] - a[1])
+                .map(([category, amount]) => {
+                    const percentage = (amount / maxAmount) * 100;
+                    return `
+                        <div class="chart-bar">
+                            <div class="chart-label">
+                                <span>${categoryIcons[category]}</span>
+                                <span>${category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                            </div>
+                            <div class="chart-bar-bg">
+                                <div class="chart-bar-fill" style="width: ${percentage}%; background: ${categoryColors[category]}">
+                                    $${amount.toFixed(2)}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('es-ES', options);
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installPrompt').style.display = 'flex';
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('App instalada');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installPrompt').style.display = 'none';
+                });
+            }
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(() => {
+                console.log('Service Worker registrado');
+            });
+        }
+
+        updateStats();
+        renderExpenses();
+        renderChart();
+    </script>
+</body>
+</html>
