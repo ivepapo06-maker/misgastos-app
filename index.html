@@ -27,7 +27,11 @@
             radial-gradient(ellipse at 85% 85%,rgba(139,92,246,.07) 0%,transparent 50%),
             radial-gradient(ellipse at 60% 5%,rgba(6,182,212,.04) 0%,transparent 40%);
             pointer-events:none;z-index:0}
+
+        /* ── LAYOUT ── */
         .wrap{max-width:620px;margin:0 auto;padding:16px 14px 120px;position:relative;z-index:1}
+
+        /* ── NAV BOTTOM ── */
         .nav{position:fixed;bottom:0;left:0;right:0;z-index:100;
             background:rgba(13,21,40,.95);backdrop-filter:blur(20px);
             border-top:1px solid var(--border);
@@ -39,7 +43,11 @@
         .nav-btn .ni{font-size:20px}
         .nav-btn.on{color:var(--blue)}
         .nav-btn.on .ni{filter:drop-shadow(0 0 6px var(--blue))}
+
+        /* ── PAGES ── */
         .page{display:none}.page.on{display:block}
+
+        /* ── HEADER ── */
         .hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px}
         .logo{display:flex;align-items:center;gap:10px}
         .logo-ico{width:38px;height:38px;background:linear-gradient(135deg,var(--blue),var(--purple));
@@ -50,9 +58,13 @@
         .logo-sub{font-size:10px;color:var(--tm);font-weight:600;letter-spacing:1px;text-transform:uppercase}
         .date-pill{background:var(--card);border:1px solid var(--border);border-radius:9px;
             padding:7px 13px;font-size:11px;color:var(--t2);font-weight:500}
+
+        /* ── CARDS ── */
         .card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:22px;margin-bottom:14px}
         .card-title{font-size:15px;font-weight:700;color:var(--t1);display:flex;align-items:center;gap:8px;margin-bottom:18px}
         .card-title .ct-icon{font-size:18px}
+
+        /* ── BALANCE HERO ── */
         .bal-card{position:relative;overflow:hidden}
         .bal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
             background:linear-gradient(90deg,var(--blue),var(--purple),var(--cyan))}
@@ -74,6 +86,8 @@
         .sbox-lbl{font-size:9px;color:var(--tm);text-transform:uppercase;letter-spacing:.7px;font-weight:600;margin-bottom:3px}
         .sbox-val{font-size:15px;font-weight:800}
         .sbox.inc .sbox-val{color:var(--green)}.sbox.exp .sbox-val{color:var(--red)}.sbox.mon .sbox-val{color:var(--purple)}
+
+        /* ── TABS ── */
         .tabs{display:flex;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:4px;margin-bottom:14px;gap:4px}
         .tb{flex:1;padding:11px;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;
             transition:all .3s;background:transparent;color:var(--tm);font-family:'Inter',sans-serif;
@@ -82,6 +96,8 @@
             border:1px solid rgba(239,68,68,.3);box-shadow:0 0 12px rgba(239,68,68,.1)}
         .tb.ti{background:linear-gradient(135deg,rgba(16,185,129,.2),rgba(16,185,129,.1));color:#34d399;
             border:1px solid rgba(16,185,129,.3);box-shadow:0 0 12px rgba(16,185,129,.1)}
+
+        /* ── FORM ── */
         .fcard{border-radius:22px;padding:22px;margin-bottom:14px;background:var(--card)}
         .fcard.em{border:1px solid rgba(239,68,68,.15)}.fcard.im{border:1px solid rgba(16,185,129,.15)}
         .fhdr{display:flex;align-items:center;gap:9px;margin-bottom:20px}
@@ -97,7 +113,7 @@
             transition:all .3s;-webkit-appearance:none}
         .finput:focus{outline:none}
         .finput.ef:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,.1)}
-        .finput.if:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.1)}
+        .finput.if:focus{border-color:var(--green);box-shadow:0 0 0 0 3px rgba(16,185,129,.1)}
         .tinput{width:100%;padding:13px 14px;background:var(--bg2);border:1px solid var(--border);
             border-radius:var(--rs);font-size:14px;font-weight:500;color:var(--t1);font-family:'Inter',sans-serif;
             transition:all .3s;-webkit-appearance:none}
@@ -115,9 +131,13 @@
         .btn-save.eb{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 4px 18px rgba(239,68,68,.35)}
         .btn-save.ib{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 4px 18px rgba(16,185,129,.35)}
         .btn-save:hover{transform:translateY(-2px)}.btn-save:active{transform:translateY(0)}
+
+        /* ── SECTION TITLE ── */
         .stitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
         .stitle h3{font-size:15px;font-weight:700;color:var(--t1)}
         .stitle span{font-size:11px;color:var(--tm);font-weight:500}
+
+        /* ── FILTERS ── */
         .fscroll{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:18px;scrollbar-width:none}
         .fscroll::-webkit-scrollbar{display:none}
         .fchip{padding:7px 14px;border:1px solid var(--border);border-radius:18px;background:var(--bg2);
@@ -125,6 +145,8 @@
             transition:all .25s;font-family:'Inter',sans-serif}
         .fchip:hover{border-color:var(--borderglow);color:var(--t1)}
         .fchip.on{background:rgba(59,130,246,.12);border-color:var(--blue);color:#60a5fa}
+
+        /* ── TX LIST ── */
         .txlist{display:flex;flex-direction:column;gap:9px}
         .txitem{display:flex;align-items:center;gap:13px;padding:14px;background:var(--bg2);
             border:1px solid var(--border);border-radius:var(--rs);transition:all .25s;
@@ -143,12 +165,16 @@
         .txdel{background:none;border:none;color:var(--tm);font-size:15px;cursor:pointer;
             padding:3px 6px;border-radius:6px;transition:all .2s;font-family:'Inter',sans-serif}
         .txdel:hover{background:rgba(239,68,68,.12);color:var(--red)}
+
+        /* ── CHART BAR ── */
         .cbar-row{display:flex;align-items:center;gap:9px;margin-bottom:11px}
         .cbar-lbl{min-width:85px;font-size:11px;font-weight:600;color:var(--t2);display:flex;align-items:center;gap:5px}
         .cbar-track{flex:1;height:26px;background:var(--bg2);border-radius:6px;overflow:hidden;border:1px solid var(--border)}
         .cbar-fill{height:100%;border-radius:6px;transition:width .6s cubic-bezier(.34,1.56,.64,1);
             display:flex;align-items:center;justify-content:flex-end;padding-right:7px;
             font-size:10px;font-weight:700;color:#fff;min-width:36px}
+
+        /* ── PRESUPUESTO ── */
         .budget-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:16px;margin-bottom:10px}
         .budget-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
         .budget-cat{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
@@ -170,6 +196,8 @@
             color:#fff;border:none;border-radius:var(--rs);font-size:12px;font-weight:700;
             cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .2s}
         .btn-add:hover{transform:translateY(-1px)}
+
+        /* ── TENDENCIAS ── */
         .trend-tabs{display:flex;gap:6px;margin-bottom:16px}
         .trend-tab{padding:7px 16px;border:1px solid var(--border);border-radius:18px;background:var(--bg2);
             font-size:11px;font-weight:700;color:var(--tm);cursor:pointer;font-family:'Inter',sans-serif;
@@ -183,6 +211,8 @@
         .sum-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:14px}
         .sum-box-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:.7px;font-weight:600;margin-bottom:6px}
         .sum-box-val{font-size:20px;font-weight:800}
+
+        /* ── EXPORT ── */
         .export-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
         .export-btn{padding:18px 14px;border:1px solid var(--border);border-radius:var(--rs);background:var(--bg2);
             cursor:pointer;text-align:center;transition:all .3s;font-family:'Inter',sans-serif}
@@ -197,21 +227,29 @@
         .export-info{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);
             padding:14px;margin-top:12px;font-size:12px;color:var(--tm);line-height:1.7}
         .export-info strong{color:var(--t2)}
+
+        /* ── ALERT ── */
         .alert-banner{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--rs);
             margin-bottom:10px;animation:fsld .3s ease}
         .alert-banner.warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25)}
         .alert-banner.danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25)}
         .alert-banner span{font-size:12px;font-weight:600}
         .alert-banner.warn span{color:#fbbf24}.alert-banner.danger span{color:#f87171}
+
+        /* ── INSTALL ── */
         .install-bar{background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(139,92,246,.15));
             border:1px solid rgba(99,179,237,.2);border-radius:var(--r);padding:13px 16px;
             display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
         .install-bar span{font-size:12px;font-weight:600;color:var(--t2)}
         .install-cta{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;
             padding:7px 15px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
+
+        /* ── EMPTY ── */
         .empty{text-align:center;padding:44px 20px}
         .empty .ei{font-size:52px;margin-bottom:12px;opacity:.25}
         .empty p{font-size:14px;color:var(--tm);font-weight:500}
+
+        /* ── ANIMATIONS ── */
         @keyframes fsld{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
         @media(max-width:420px){
             .bal-amt{font-size:38px}.cat-grid{grid-template-columns:repeat(3,1fr)}
@@ -223,10 +261,14 @@
 </head>
 <body>
 <div class="wrap">
+
+    <!-- INSTALL -->
     <div id="installBar" class="install-bar" style="display:none">
         <span>📲 Instalar MisGastos como app</span>
         <button class="install-cta" onclick="installApp()">Instalar</button>
     </div>
+
+    <!-- ══════════════════════ PAGE: INICIO ══════════════════════ -->
     <div class="page on" id="pg-home">
         <div class="hdr">
             <div class="logo">
@@ -235,6 +277,8 @@
             </div>
             <div class="date-pill" id="dateLabel"></div>
         </div>
+
+        <!-- Balance -->
         <div class="card bal-card">
             <div class="bal-lbl">Balance Disponible</div>
             <div class="bal-amt neu" id="balAmt">$0.00</div>
@@ -245,11 +289,17 @@
                 <div class="sbox mon"><div class="sbox-ico">📅</div><div class="sbox-lbl">Este Mes</div><div class="sbox-val" id="totMon">$0</div></div>
             </div>
         </div>
+
+        <!-- Alertas de presupuesto -->
         <div id="alertZone"></div>
+
+        <!-- TABS -->
         <div class="tabs">
             <button class="tb te" id="tbE" onclick="setTab('expense')">➖ Gasto</button>
             <button class="tb" id="tbI" onclick="setTab('income')">➕ Ingreso</button>
         </div>
+
+        <!-- FORM -->
         <div class="fcard em" id="fCard">
             <div class="fhdr">
                 <div class="fhdr-ico e" id="fIco">➖</div>
@@ -276,10 +326,14 @@
                 <button type="submit" class="btn-save eb" id="fBtn">💾 &nbsp;Guardar Gasto</button>
             </form>
         </div>
+
+        <!-- Gráfico categorías -->
         <div class="card">
             <div class="card-title"><span class="ct-icon">📊</span> Gastos por Categoría</div>
             <div id="catChart"><div class="empty"><div class="ei">📊</div><p>Sin gastos aún</p></div></div>
         </div>
+
+        <!-- Historial -->
         <div class="card">
             <div class="stitle"><h3>🗂️ Movimientos</h3><span id="txCount">0 registros</span></div>
             <div class="fscroll" id="histFilters">
@@ -298,10 +352,13 @@
             <div class="txlist" id="txList"></div>
         </div>
     </div>
+
+    <!-- ══════════════════════ PAGE: PRESUPUESTO ══════════════════════ -->
     <div class="page" id="pg-budget">
         <div class="hdr"><div class="logo"><div class="logo-ico">🎯</div>
             <div><div class="logo-name">Presupuesto</div><div class="logo-sub">Control Mensual</div></div></div>
         </div>
+
         <div class="card">
             <div class="card-title"><span class="ct-icon">➕</span> Nuevo Límite</div>
             <div class="budget-input-row">
@@ -319,13 +376,18 @@
             </div>
             <p style="font-size:11px;color:var(--tm)">💡 Recibirás alerta al alcanzar el 80% y el 100% del límite</p>
         </div>
+
         <div id="budgetList"><div class="empty"><div class="ei">🎯</div><p>Sin presupuestos aún</p></div></div>
     </div>
+
+    <!-- ══════════════════════ PAGE: TENDENCIAS ══════════════════════ -->
     <div class="page" id="pg-trends">
         <div class="hdr"><div class="logo"><div class="logo-ico">📈</div>
             <div><div class="logo-name">Tendencias</div><div class="logo-sub">Análisis Financiero</div></div></div>
         </div>
+
         <div class="summary-grid" id="sumGrid"></div>
+
         <div class="card">
             <div class="card-title"><span class="ct-icon">📈</span> Evolución de Gastos e Ingresos</div>
             <div class="trend-tabs">
@@ -339,15 +401,19 @@
                 <div class="tleg-item"><div class="tleg-dot" style="background:#ef4444"></div>Gastos</div>
             </div>
         </div>
+
         <div class="card">
             <div class="card-title"><span class="ct-icon">📊</span> Resumen del Mes</div>
             <div id="monthSummary"></div>
         </div>
     </div>
+
+    <!-- ══════════════════════ PAGE: EXPORTAR ══════════════════════ -->
     <div class="page" id="pg-export">
         <div class="hdr"><div class="logo"><div class="logo-ico">📤</div>
             <div><div class="logo-name">Exportar</div><div class="logo-sub">Tus Datos</div></div></div>
         </div>
+
         <div class="card">
             <div class="card-title"><span class="ct-icon">📤</span> Exportar Datos</div>
             <div class="export-grid">
@@ -379,19 +445,27 @@
                 <strong>📋 Texto:</strong> Resumen en texto plano para compartir por WhatsApp o email.
             </div>
         </div>
+
         <div class="card">
             <div class="card-title"><span class="ct-icon">📋</span> Vista Previa</div>
             <div id="exportPreview"></div>
         </div>
     </div>
-</div>
+
+</div><!-- /wrap -->
+
+<!-- NAV -->
 <nav class="nav">
     <button class="nav-btn on" onclick="goPage('home',this)"><span class="ni">🏠</span>Inicio</button>
     <button class="nav-btn" onclick="goPage('budget',this)"><span class="ni">🎯</span>Presupuesto</button>
     <button class="nav-btn" onclick="goPage('trends',this)"><span class="ni">📈</span>Tendencias</button>
     <button class="nav-btn" onclick="goPage('export',this)"><span class="ni">📤</span>Exportar</button>
 </nav>
+
 <script>
+/* ═══════════════════════════════════════════════
+   DATOS
+═══════════════════════════════════════════════ */
 const ECAT = [
     {id:'comida',         icon:'🍔',label:'Comida',     color:'#f59e0b'},
     {id:'transporte',     icon:'🚗',label:'Transporte', color:'#3b82f6'},
@@ -412,17 +486,25 @@ const ICAT = [
 ];
 const ALLCAT = [...ECAT,...ICAT];
 const cat = id => ALLCAT.find(c=>c.id===id)||{icon:'💳',label:id,color:'#6366f1'};
+
 let TXS  = JSON.parse(localStorage.getItem('mg_tx')||'[]');
 let BUDs = JSON.parse(localStorage.getItem('mg_bud')||'{}');
+
+// Migrar datos viejos
 const old1 = JSON.parse(localStorage.getItem('mg_transactions')||'[]');
 const old2 = JSON.parse(localStorage.getItem('expenses')||'[]');
 if(!TXS.length && old1.length) TXS = old1;
 else if(!TXS.length && old2.length) TXS = old2.map(e=>({...e,type:'expense'}));
 save();
+
 let curTab   = 'expense';
 let selCat   = '';
 let curFilt  = 'all';
 let trendPer = '7d';
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('dateLabel').textContent =
         new Date().toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'});
@@ -431,6 +513,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     fillBudgetSelect();
     render();
 });
+
+/* ═══════════════════════════════════════════════
+   NAVEGACIÓN
+═══════════════════════════════════════════════ */
 function goPage(id,btn){
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
@@ -440,6 +526,10 @@ function goPage(id,btn){
     if(id==='budget') renderBudgetList();
     if(id==='export') renderPreview();
 }
+
+/* ═══════════════════════════════════════════════
+   TABS GASTO/INGRESO
+═══════════════════════════════════════════════ */
 function setTab(t){
     curTab=t; selCat='';
     const isE=t==='expense';
@@ -454,6 +544,10 @@ function setTab(t){
     document.getElementById('fAmt').className='finput '+(isE?'ef':'if');
     renderCats();
 }
+
+/* ═══════════════════════════════════════════════
+   CATEGORÍAS
+═══════════════════════════════════════════════ */
 function renderCats(){
     const cats=curTab==='expense'?ECAT:ICAT;
     document.getElementById('catGrid').innerHTML=cats.map(c=>`
@@ -468,6 +562,10 @@ function pickCat(id){
         b.className='cat-btn'+(b.dataset.id===id?' '+cls:'');
     });
 }
+
+/* ═══════════════════════════════════════════════
+   FORM SUBMIT
+═══════════════════════════════════════════════ */
 document.getElementById('txForm').addEventListener('submit',e=>{
     e.preventDefault();
     if(!selCat){alert('Selecciona una categoría');return;}
@@ -487,18 +585,38 @@ document.getElementById('txForm').addEventListener('submit',e=>{
     setTimeout(()=>{btn.innerHTML=orig;btn.style.opacity='1';},1400);
     render();
 });
+
+/* ═══════════════════════════════════════════════
+   GUARDAR
+═══════════════════════════════════════════════ */
 function save(){localStorage.setItem('mg_tx',JSON.stringify(TXS));}
 function saveBudStr(){localStorage.setItem('mg_bud',JSON.stringify(BUDs));}
+
+/* ═══════════════════════════════════════════════
+   ELIMINAR TX
+═══════════════════════════════════════════════ */
 function delTx(id){
     if(!confirm('¿Eliminar este movimiento?'))return;
     TXS=TXS.filter(t=>t.id!==id); save(); render();
 }
+
+/* ═══════════════════════════════════════════════
+   FILTRO
+═══════════════════════════════════════════════ */
 function setF(el,f){
     curFilt=f;
     document.querySelectorAll('#histFilters .fchip').forEach(c=>c.classList.remove('on'));
     el.classList.add('on'); renderList();
 }
+
+/* ═══════════════════════════════════════════════
+   RENDER PRINCIPAL
+═══════════════════════════════════════════════ */
 function render(){updateStats();renderCatChart();renderList();renderAlerts();}
+
+/* ═══════════════════════════════════════════════
+   ESTADÍSTICAS
+═══════════════════════════════════════════════ */
 function updateStats(){
     const inc=TXS.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
     const exp=TXS.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
@@ -519,6 +637,10 @@ function updateStats(){
     document.getElementById('totExp').textContent=fmtS(exp);
     document.getElementById('totMon').textContent=fmtS(Math.abs(mon));
 }
+
+/* ═══════════════════════════════════════════════
+   ALERTAS PRESUPUESTO
+═══════════════════════════════════════════════ */
 function renderAlerts(){
     const now=new Date();
     const spent={};
@@ -537,6 +659,10 @@ function renderAlerts(){
     });
     document.getElementById('alertZone').innerHTML=html;
 }
+
+/* ═══════════════════════════════════════════════
+   GRÁFICO CATEGORÍAS
+═══════════════════════════════════════════════ */
 function renderCatChart(){
     const tot={};
     TXS.filter(t=>t.type==='expense').forEach(t=>{tot[t.category]=(tot[t.category]||0)+t.amount;});
@@ -552,6 +678,10 @@ function renderCatChart(){
         </div>`;
     }).join('');
 }
+
+/* ═══════════════════════════════════════════════
+   LISTA TX
+═══════════════════════════════════════════════ */
 function renderList(){
     let list=[...TXS];
     if(curFilt==='income') list=list.filter(t=>t.type==='income');
@@ -575,6 +705,10 @@ function renderList(){
         </div>`;
     }).join('');
 }
+
+/* ═══════════════════════════════════════════════
+   PRESUPUESTO
+═══════════════════════════════════════════════ */
 function fillBudgetSelect(){
     document.getElementById('bCat').innerHTML=
         '<option value="">Selecciona categoría…</option>'+
@@ -624,6 +758,10 @@ function renderBudgetList(){
         </div>`;
     }).join('');
 }
+
+/* ═══════════════════════════════════════════════
+   TENDENCIAS
+═══════════════════════════════════════════════ */
 function setTrend(el,per){
     trendPer=per;
     document.querySelectorAll('.trend-tab').forEach(t=>t.classList.remove('on'));
@@ -718,13 +856,17 @@ function renderMonthSummary(){
         </div>`;
     }).join('');
 }
+
+/* ═══════════════════════════════════════════════
+   EXPORTAR
+═══════════════════════════════════════════════ */
 function exportExcel(){
     const header='Fecha,Tipo,Categoría,Descripción,Monto\n';
     const rows=TXS.map(t=>{
         const c=cat(t.category);
         return `"${t.date}","${t.type==='income'?'Ingreso':'Gasto'}","${c.label}","${t.description.replace(/"/g,'""')}","${t.amount.toFixed(2)}"`;
     }).join('\n');
-    const bom='\uFEFF';
+    const bom='\uFEFF'; // UTF-8 BOM para Excel
     download(bom+header+rows,'MisGastos_'+today()+'.csv','text/csv;charset=utf-8;');
 }
 function exportJSON(){
@@ -815,9 +957,17 @@ function download(content,filename,type){
     a.download=filename; a.click();
 }
 function today(){return new Date().toISOString().split('T')[0];}
+
+/* ═══════════════════════════════════════════════
+   UTILIDADES
+═══════════════════════════════════════════════ */
 function fmt(n){return '$'+Number(n).toLocaleString('es',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtS(n){if(n>=1000)return '$'+(n/1000).toFixed(1)+'k';return '$'+Number(n).toFixed(0);}
 function fmtD(s){return new Date(s+'T00:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'});}
+
+/* ═══════════════════════════════════════════════
+   PWA
+═══════════════════════════════════════════════ */
 let dp;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('installBar').style.display='flex';});
 function installApp(){if(!dp)return;dp.prompt();dp.userChoice.then(()=>{dp=null;document.getElementById('installBar').style.display='none';});}
